@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<title>Plan Your City</title>	
+<head>			
+	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../plugin/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../plugin/bootstrap/css/bootstrap-theme.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<!--<link rel="StyleSheet" href="../css/stylesheet_detalle.css" TYPE="text/css">-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="menuLateral" class="btn-group-vertical navbar-default" role="group">
+		<div class="row">
+			<div class=".col-lg-1 boton btn btn-primary btn-lg">
+				<li><a href="http://localhost:1234/Calendario">Calendario</a></li>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class=".col-lg-1 boton btn btn-primary btn-lg">
+				<li><a href="http://localhost:1234/buscar">Buscar</a></li>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class=".col-lg-1 boton btn btn-primary btn-lg">
+				<li><a href="http://localhost:1234/ofertar">Ofertar</a></li>
+			</div>
+		</div>
+	</div>
+
+	<div id="contenido" class="container-fluid">
+		<h1>Plan Your City</h1>	
+
+		<div class="contenidoPrincipal">
+			{% block content %}{% endblock %}
+		</div>
+		<div id="clear"></div>
+
+		<div class="row">
+			<br>
+			<br>
+			<center>
+				<p>Copyright &copy; Plain Your City 2015</p>
+			</center>
+		</div>
+	</div>
+
+	<!--Llamadas a scripts-->
+	<script type="text/javascript" src="../plugin/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   	  	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../js/botones.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="../js/javascript_detalle.js"></script>
+</html>
+
+
+
+               

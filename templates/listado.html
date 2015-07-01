@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+	{% block content %}
+		<h3>Resultados de la busqueda</h3>
+		{% for i in record %} 	
+			<div id="evento">
+				<div id="imagen">
+					<img src={{i.Imagen}}>
+				</div>
+
+				<div id="detallesEvento">
+					<h3>{{i.Titulo}}</h3>
+					<div id="datosEvento">
+						<p>{{i.Direccion}}</p>
+						<div class="datos">
+							<div>{{i.Precio}}</div>
+							<div>{{i.Aforo_Max}}</div>
+							<div>{{i.Hora}}</div>
+						</div>
+					</div>
+
+					<div id="detalles">
+						<a href="#">Mas detalles...</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		<br></br>
+	{% endblock %}
