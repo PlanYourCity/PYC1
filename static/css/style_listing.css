@@ -1,0 +1,62 @@
+.contenidoPrincipal > h3{
+	text-align: center;
+}
+
+#detallesEvento > h3{
+	text-align: center;
+	margin-top: 0px;
+}
+
+#imagenEvento{
+	width: 20%;
+}
+
+#imagenEvento img {
+    height: 150px;
+    width: 150px;
+    margin: 10px;
+}
+
+#evento {
+	overflow: hidden;
+	width: 100%;
+	background-color: #fff;
+	margin-bottom: 10px;
+	border-radius: 6px;
+	box-shadow: 5px 5px 7px grey;
+}
+
+#detallesEvento{
+	height: 100%;
+    margin: 10px;
+    padding: 10px;
+    width: 75%;
+}
+
+#imagenEvento, #detallesEvento, #datosEvento, #detalles {
+	float: left;
+}
+
+#datosEvento {
+	margin: 0 auto;
+    width: 80%;
+}
+
+#detalles {
+    margin-top: 50px;
+    width: 20%;
+}
+
+.datos div {
+    float: left;
+    margin: 5px;
+    width: 25%;
+}
+
+#precio{
+	font-size: 300%;
+	text-align: center;
+	float: right;
+	width: 20%;
+	height: 100%;
+}
