@@ -1,0 +1,81 @@
+#activity{
+	margin: auto;
+	width:100%;
+	height:100%;
+}
+
+#activity_title{
+	text-align: center;
+}
+
+#date{
+	padding-right: 5em;
+}
+
+#description{
+	text-align: justify;
+}
+
+#follow_me_button_div{
+	text-align: right;
+}
+
+#follow_me {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 15px;
+	border: none;
+	background-color: #0066FF;
+	color:white;
+}
+
+#follow_me:hover {
+   background-color: blue;
+   color:white;
+}
+
+.carousel-inner,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+	margin: auto;
+	text-align: center;
+}
+
+.carousel .item {
+    height: 100%;
+    width: 100%; 
+}
+
+.container {
+	width: 40% !important;
+	margin: auto;
+}
+
+.carousel-control.left, .carousel-control.right{
+	background: none !important;
+	filter: progid:none !important;
+}
+
+.carousel{
+	margin: auto;
+}
+
+.carousel-control {
+	background: #0033CC;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 15% !important;
+	font-size: 20px;
+	color: #0033CC;
+	text-align: center;
+}
+
+#map-canvas{
+	float:left;
+	margin-right:1em;
+	margin-bottom:1em;
+	height: 50%;
+	width: 50%; 
+}
