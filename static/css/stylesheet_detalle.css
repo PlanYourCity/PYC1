@@ -1,22 +1,71 @@
-#activity{
+#activity {
 	margin: auto;
-	width:100%;
-	height:100%;
 }
 
-#activity_title{
+.margin_top {
+	margin-top: 20px;
+}
+
+#activity_title {
 	text-align: center;
+	width: 100%;
+	padding: 1%;
 }
 
-#date{
-	padding-right: 5em;
+.white_box {
+	overflow: visible;
+	background-color: #fff;
+	padding: 5px;
+	border-radius: 6px;
+	box-shadow: 5px 5px 7px grey;
+	word-wrap: break-word;
+	overflow: auto;
 }
 
-#description{
+.main_data {
+	font-size: 24px;
+}
+
+.float_right {
+	width: 49%;
+	float: right;
+	clear: right;
+}
+
+.float_left {
+	width: 49%;
+	float: left;
+	clear: left;
+}
+
+.float_items {
+	overflow: visible;
+}
+
+.float_below {
+	clear:both;
+}
+
+#clear_address {
+	clear: both;
+}
+
+#address {
+	width: 100%;
+}
+
+#description {
 	text-align: justify;
+	font-size: 16px;
+	float: right;
+	clear: right;
+	width: 58%;
+	height: 300px;
 }
 
-#follow_me_button_div{
+#follow_me_button_div {
+	clear: both;
+	width: 100%;
 	text-align: right;
 }
 
@@ -24,15 +73,20 @@
 	text-align: center;
 	font-size: 20px;
 	font-weight: bold;
+	width: 100%;
 	padding: 15px;
 	border: none;
-	background-color: #0066FF;
-	color:white;
+	background-color: #337AB7;
+	color: white;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 #follow_me:hover {
-   background-color: blue;
-   color:white;
+   background-color: #2E6DA4;
+   color: white;
 }
 
 .carousel-inner,
@@ -43,21 +97,23 @@
 }
 
 .carousel .item {
-    height: 100%;
-    width: 100%; 
+	margin: auto;
+    height: 80%;
+    width: 80%; 
 }
 
 .container {
-	width: 40% !important;
+	width: 35% !important;
 	margin: auto;
 }
 
 .carousel-control.left, .carousel-control.right{
 	background: none !important;
-	filter: progid:none !important;
+	filter: progid: none !important;
+	color:grey !important;
 }
 
-.carousel{
+.carousel {
 	margin: auto;
 }
 
@@ -66,16 +122,19 @@
 	top: 0;
 	bottom: 0;
 	left: 0;
-	width: 15% !important;
+	width: 10% !important;
 	font-size: 20px;
 	color: #0033CC;
 	text-align: center;
 }
 
-#map-canvas{
-	float:left;
-	margin-right:1em;
-	margin-bottom:1em;
-	height: 50%;
-	width: 50%; 
+.active {
+	padding-top: 0%;
+}
+
+#map-canvas {
+	float: left;
+	clear: left;
+	width: 40%;
+	height: 300px; 
 }
