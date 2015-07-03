@@ -2,32 +2,28 @@
 	{% block content %}
 		<h3>Resultados de la busqueda</h3>
 		{% for i in record %} 	
-			<div id="evento">
-				<div id="imagenEvento">
+			<div class="evento">
+				<div class="imagenEvento">
 					<img src={{i.Imagen}}>
 				</div>
 
-				<div id="detallesEvento">
-					<h3><a href="http://localhost:8000/detalle/{{i.Titulo}}">{{i.Titulo}}</a></h3>
-					<div id="datosEvento">
+				<div class="detallesEvento">
+					<h3>{{i.Titulo}}</h3>
+					<div class="datosEvento">
 						<p>Dirección: {{i.Direccion}}</p>
 						<div class="datos">
-							<div>Aforo actual: <!--{{i.Aforo_actual}}--> 50</div>
-							<div>Aforo máx.: <!--{{i.Aforo_Max}}-->100</div>
+							<div>Aforo actual: {{i.Aforo_actual}} </div>
+							<div>Aforo máx.: {{i.Aforo_Max}}</div>
 							<div>Hora: {{i.Hora}}</div>
 						</div>
 					</div>
 
-					<div id="precio">
+					<div class="precio">
 						{{i.Precio}}
 					</div>
-					<!--
-					<div id="detalles">
-						<a href="#">Mas detalles...</a>
-					</div>
-					-->
 				</div>
 			</div>
 		{% endfor %}
 		<br></br>
 	{% endblock %}
+

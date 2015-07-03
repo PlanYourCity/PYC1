@@ -21,4 +21,7 @@ urlpatterns = [
     	url(r'^admin/', include(admin.site.urls)),
     	url(r'listado', coreviews.lista_eventos),
 	    url(r'^detalle/(?P<titulo>.+)/$', coreviews.detalle),
+        url(r'^ofertar', coreviews.ofertar),
+        url(r'^buscar', coreviews.buscar),
+        url(r'^calendario', coreviews.calendario),
 ]

@@ -5,6 +5,10 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/style_listing.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/stylesheet_detalle.css">
+
+	<!--CSS PARA CONSTRUCCION-->
+	<link rel="stylesheet" type="text/css" href="/static/css/style_building.css">
+
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
@@ -15,19 +19,19 @@
 	<div id="menuLateral" class="btn-group-vertical navbar-default" role="group">
 		<div class="row">
 			<div class=".col-lg-1 boton btn btn-primary btn-lg">
-				<li><a href="http://localhost:1234/Calendario">Calendario</a></li>
+				<li><a href="http://localhost:8000/calendario">Calendario</a></li>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class=".col-lg-1 boton btn btn-primary btn-lg">
-				<li><a href="http://localhost:1234/buscar">Buscar</a></li>
+				<li><a href="http://localhost:8000/buscar">Buscar</a></li>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class=".col-lg-1 boton btn btn-primary btn-lg">
-				<li><a href="http://localhost:1234/ofertar">Ofertar</a></li>
+				<li><a href="http://localhost:8000/ofertar">Ofertar</a></li>
 			</div>
 		</div>
 	</div>
@@ -41,20 +45,15 @@
 
 		<div id="clear"></div>
 
-		<div class="row">
-			<br>
-			<br>
-			<center>
+		<div id="footer" class="row">
 				<p>Copyright &copy; Plain Your City 2015</p>
-			</center>
 		</div>
 	</div>
 
 	<!--Llamadas a scripts-->
-	<script type="text/javascript" src="../plugin/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   	  	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<!--<script type="text/javascript" src="../static/js/botones.js"></script>-->
+	<script type="text/javascript" src="/static/js/botonEvento.js"></script>
 </html>
 
 

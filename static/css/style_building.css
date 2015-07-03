@@ -1,0 +1,9 @@
+#imgConstruccion {
+    margin: 0 auto;
+    width: 65%;
+}
+
+#imgConstruccion > img {
+	margin-top: 10%;
+	border-radius: 6px;
+}

@@ -57,3 +57,27 @@ def detalle(request, titulo):
 		diccionario = {'titulo':Tit,'imagen':Imag,'precio':Prec,'direccion':Dirr,'hora':Hour,'descripcion':Descri,'aforo':Afor}		
 		
 		return HttpResponse(template.render(Context(diccionario)))
+
+def ofertar(request):
+	if request.method == "GET":
+		titulo="Ofertar"
+		template = get_template("enConstruccion.html")
+		diccionario = {'titulo':titulo}
+		
+		return HttpResponse(template.render(Context(diccionario)))
+
+def buscar(request):
+	if request.method == "GET":
+		titulo="Buscar"
+		template = get_template("enConstruccion.html")
+		diccionario = {'titulo':titulo}
+		
+		return HttpResponse(template.render(Context(diccionario)))
+
+def calendario(request):
+	if request.method == "GET":
+		titulo="Calendario"
+		template = get_template("enConstruccion.html")
+		diccionario = {'titulo':titulo}
+		
+		return HttpResponse(template.render(Context(diccionario)))
