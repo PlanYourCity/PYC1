@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 	{% block content %}
 		<h3>Buscar</h3>
-		<form action="/busqueda" method="POST">
+		<form action="{% url 'core.views.buscar' categ %}" method="POST">
 			<label>Título</label>
 			<input type="text" name="titulo">
 			<br/>
 			<label>Ciudad</label>
 			<select name="provincia">
+				<option selected value='' >Cualquiera</option>
                 <option value='ACoruna' >A Coruña</option>
                 <option value='Alava'>Álava</option>
                 <option value='Albacete' >Albacete</option>
@@ -38,7 +39,7 @@
                 <option value='León' >León</option>
                 <option value='Lleida' >Lleida</option>
                 <option value='Lugo' >Lugo</option>
-                <option selected value='Madrid' >Madrid</option>
+                <option value='Madrid' >Madrid</option>
                 <option value='Malaga' >Málaga</option>
                 <option value='Mallorca' >Mallorca</option>
                 <option value='Melilla' >Melilla</option>
@@ -66,7 +67,7 @@
 			<input type="text" name="direccion" placeholder="Calle, numero, ciudad">
 			<br/>
 
-			{% if categoria == empleo %}
+			{% ifequal categ "empleo" %}
 				<label>Sueldo</label>
 				<input type="number" name="sueldo">
 				<div id="slideSueldo"></div>
@@ -76,15 +77,16 @@
 				<input type="number" name="precio">
 				<div id="slidePrecio"></div>
 				<br/>
-			{% endif %}
+			{% endifequal %}
 
-			{% if categoria == ocio %}
+			{% ifequal categ "ocio" %}
 				<label>Desde</label>
 				<input type="date" name="fDesde">
 				<label>Hasta</label>
 				<input type="date" name="fHasta">
 				<br/>
-			{% elif categoria == empleo %}
+			{% endifequal %}
+			{% ifequal categ "empleo" %}
 				<label>Periodo</label>
 				<select name="periodo">
 					<option value="horas">Por horas</option>
@@ -94,13 +96,14 @@
 					<option value="indef">Indefinido</option>
 				</select>
 				<br/>
-			{% endif %}
+			{% endifequal %}
 				
-			{% if categoria == ocio %}
+			{% ifequal categ  "ocio" %}
 				<label>Aforo máximo</label>
 				<input type="number" name="aMax">
 				<br/>
-			{% elif categoria == vivienda %}
+			{% endifequal %}
+			{% ifequal categ "vivienda" %}
 				<label>Nº habitaciones</label>
 				<input type="number" name="nHabit">
 				<br/>
@@ -110,7 +113,7 @@
 					<option value="venta">Venta</option>
 				</select>
 				<br/>
-			{% endif%}
+			{% endifequal%}
 
 			<input type="submit" value="Enviar">
 
