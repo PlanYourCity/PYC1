@@ -90,7 +90,7 @@ def ofertar(request):
 def buscar(request):
 	if request.method == "GET":
 		titulo="Buscar"
-		template = get_template("enConstruccion.html")
+		template = get_template("busqueda.html")
 		diccionario = {'titulo':titulo}
 		
 		return HttpResponse(template.render(Context(diccionario)))

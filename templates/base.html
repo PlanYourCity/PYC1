@@ -5,35 +5,54 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/style_listing.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/stylesheet_detalle.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style_search.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 	<!--CSS PARA CONSTRUCCION-->
 	<link rel="stylesheet" type="text/css" href="/static/css/style_building.css">
 
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 
 	<meta charset="utf-8">
 </head>
 <body>
 	<div id="menuLateral" class="btn-group-vertical navbar-default" role="group">
+
 		<div class="row">
 			<div class=".col-lg-1 boton btn btn-primary btn-lg">
 				<li><a href="http://localhost:8000/calendario">Calendario</a></li>
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row buscar">
 			<div class=".col-lg-1 boton btn btn-primary btn-lg">
-				<li><a href="http://localhost:8000/buscar">Buscar</a></li>
+				<li><a href="#">Buscar</a></li>
+			</div>
+			<div class="submenuBuscar btn-primary">
+				<ul>
+					<li><a href="#">Ocio</a></li>
+					<li><a href="#">Vivienda</a></li>
+					<li><a href="#">Empleo</a></li>
+				</ul>
 			</div>
 		</div>
 
-		<div class="row">
+		
+
+		<div class="row ofertar">
 			<div class=".col-lg-1 boton btn btn-primary btn-lg">
-				<li><a href="http://localhost:8000/ofertar">Ofertar</a></li>
+				<li><a href="#">Ofertar</a></li>
+			</div>
+			<div class="submenuOfertar btn-primary">
+				<ul>
+					<li><a href="#">Ocio</a></li>
+					<li><a href="#">Vivienda</a></li>
+					<li><a href="#">Empleo</a></li>
+				</ul>
 			</div>
 		</div>
+
 	</div>
 
 	<div id="contenido" class="container-fluid">
@@ -53,7 +72,11 @@
 	<!--Llamadas a scripts-->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   	  	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript"src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/static/js/botonEvento.js"></script>
+	<script type="text/javascript" src="/static/js/formBusqueda.js"></script>
+	<script type="text/javascript" src="/static/js/submenus.js"></script>
+	<script type="text/javascript" src="/static/js/funcSubmenus.js"></script>
 </html>
 
 
