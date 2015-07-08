@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link href="./style_ofertas.css" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-
-
-
-
-
 {% extends 'base.html' %}
 
 {% block content %}
        
 	<!--<p><center><h3>{{tit}}</center></p>
     	<p><br></br></p>--> 			
-    	<div>
-		<form method="post" action= "/ofertar">
-			<div>
+
+    	<div id="oferta">
+		<div id="title">
+			<h1>Formulario para ofertar &nbsp;{{categoria}}</h1>
+    	</div>
+		<form method="post" action= "/ofertar/ocio">
+		{% csrf_token %}
+			<div class="float_items">
 				<div class="campo">
 					Ciudad:
 				</div>
-				<div class="campos_rellenar">
-					<select name="ciudad">
+				<div class="campo_rellenar">
+					<select class="entrada" name="Ciudad">
 						<option value='ACoruna' >A Coruña</option>
 				        <option value='Alava'>Álava</option>
 				        <option value='Albacete' >Albacete</option>
@@ -79,163 +73,159 @@
 					</select>
 				</div>
 			</div>
-			<div>
+			<div class="float_items">
 				<div class="campo">
 					Dirección:
 				</div>
-				<div class="campos_rellenar">
-					<input type="text" name="Direccion" value=""/>
+				<div class="campo_rellenar">
+					<input class="entrada" type="text" name="Direccion" value=""/>
 				</div>
 			</div>
-			<div>
+			<div class="float_items">
 				<div class="campo">
 					Título evento:
 				</div>
-				<div class="campos_rellenar">
-					<input type="text" name="Nombreevento" value=""/>
+				<div class="campo_rellenar">
+					<input class="entrada" type="text" name="Titulo" value=""/>
 				</div>
 			</div>
-			<div>
+			<div class="float_items">
 				<div class="campo">
 					Descripción:
 				</div>
-				<div class="campos_rellenar">
-					<textarea rows="4" cols="50"></textarea>
+				<div class="campo_rellenar">
+					<textarea class="entrada" name="Descripcion" rows="4" cols="50" placeholder="Describe detalladamente el evento"></textarea>
 				</div>
 			</div>
 
-			{% if var==ocio %}
-				<div>
+			{% ifequal categoria "ocio" %}
+				<div class="float_items">
 					<div class="campo">
 						Precio (€):
 					</div>
-					<div class="campos_rellenar">
-						<input type="text" name="precio" value=""/>
+					<div class="campo_rellenar">
+						<input class="entrada" type="text" name="Precio" value=""/>
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Aforo:
 					</div>
-					<div class="campos_rellenar">
-						<input type="text" name="aforo" value=""/>
+					<div class="campo_rellenar">
+						<input class="entrada" type="text" name="Aforo_max" value="" placeholder="Cantidad máxima de personas"/>
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Fecha:
 					</div>
-					<div class="campos_rellenar">
-						<input type="text" name="fecha" value=""/>
+					<div class="campo_rellenar">
+						<input class="entrada" type="text" id="datepicker" name="Fecha"/>
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Hora:
 					</div>
-					<div class="campos_rellenar">
-						<input type="text" name="hora" value=""/>	
+					<div class="campo_rellenar">
+						<input class="entrada" type="text" name="Hora" value="" placeholder="HH:MM"/>	
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Imagen:
 					</div>
-					<div class="campos_rellenar">
-						<input type="file" name="imagen">
+					<div class="campo_rellenar">
+						<input class="entrada" type="file" name="Imagen">
 					</div>
 				</div>
-			{% endif %}
+			{% endifequal %}
 
 
 
-			{% if var==vivienda %}
-				<div>
+			{% ifequal categoria "vivienda" %}
+				<div class="float_items">
 					<div class="campo">
 						Precio (€):
 					</div>
-					<div class="campos_rellenar">
-						<input type="text" name="precio" value=""/>
+					<div class="campo_rellenar">
+						<input class="entrada" type="text" name="Precio" value=""/>
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Número de habitaciones:
 					</div>
-					<div class="campos_rellenar">
-						<input type="text" name="num_habitaciones" value=""/>
+					<div class="campo_rellenar">
+						<input class="entrada" type="text" name="NumHab" value=""/>
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Tipo:
 					</div>
-					<div class="campos_rellenar">
-						<input type="radio" name="tipo" value="alquiler">Alquiler<br>
-						<input type="radio" name="tipo" value="venta">Venta
+					<div class="campo_rellenar">
+						<input class="entrada" type="radio" name="TipoOferta" value="alquiler" checked="checked">Alquiler<br>
+						<input class="entrada" type="radio" name="TipoOferta" value="venta">Venta
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Imagen:
 					</div>
-					<div class="campos_rellenar">
-						<input type="file" name="imagen">
+					<div class="campo_rellenar">
+						<input class="entrada" type="file" name="Imagen">
 					</div>
 				</div>
-			{% endif %}
+			{% endifequal %}
 
 
-			{% if var==empleo %}
-				<div>
+			{% ifequal categ "empleo" %}
+				<div class="float_items">
 					<div class="campo">
 						Sueldo (€):
 					</div>
-					<div class="campos_rellenar">
-						<input type="text" name="sueldo" value=""/>
+					<div class="campo_rellenar">
+						<input class="entrada" type="text" name="Sueldo" value=""/>
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Plazas:
 					</div>
-					<div class="campos_rellenar">
-						<input type="text" name="plazas" value=""/>
+					<div class="campo_rellenar">
+						<input class="entrada" type="text" name="Plazas" value=""/>
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Duración del contrato:
 					</div>
-					<div class="campos_rellenar">
-						<select name="periodo">
-							<option value='horas'>Por horas</option>
-							<option value='3meses'>3 meses</option>
-							<option value='6meses'>6 meses</option>
-							<option value='1anyo'>1 año</option>
-							<option value='indefinido'>Indefinido</option>
+					<div class="campo_rellenar">
+						<select name="Periodo">
+							<option class="entrada" value='horas'>Por horas</option>
+							<option class="entrada" value='3meses'>3 meses</option>
+							<option class="entrada" value='6meses'>6 meses</option>
+							<option class="entrada" value='1anyo'>1 año</option>
+							<option class="entrada" value='indefinido'>Indefinido</option>
 						</select>
 					</div>
 				</div>
-				<div>
+				<div class="float_items">
 					<div class="campo">
 						Imagen:
 					</div>
-					<div class="campos_rellenar">
-						<input type="file" name="imagen">
+					<div class="campo_rellenar">
+						<input class="entrada" type="file" name="Imagen">
 					</div>
 				</div>
-			{% endif %}
+			{% endifequal %}
 
 
-
-			<input type="submit" value="Confirmar" class="boton"/> 
-			<input type="reset" class="boton"/>
+			<div class="float_items">
+				<input type="submit" value="Confirmar" class="boton"/> 
+				<input type="reset" class="boton" onclick="return confirm('¿Seguro que quieres restablecer el formulario?')"/>
+			</div>
 		</form>
 		</div>
 {% endblock%}
-
-
-
-</body>
-</html>

@@ -1,0 +1,57 @@
+#oferta {
+	margin: auto;
+}
+
+#title {
+	text-align: center;
+}
+
+.float_items {
+	margin: 10px;
+	width: 100%;
+	float: left;
+	clear: both;
+}
+
+.campo {
+	font-size: 16px;
+	text-align: left;
+	vertical-align: middle;
+	width: 20%;
+	float: left;
+	clear: left;
+}
+
+.campo_rellenar {
+	width: 80%;
+	float: right;
+	clear: right;
+}
+
+.entrada {
+	font-size: 16px;
+}
+
+.boton {
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 10%;
+	padding: 15px;
+	border: none;
+	background-color: #337AB7;
+	color: white;
+	border-radius: 6px;
+	box-shadow: 5px 5px 7px grey;
+	word-wrap: break-word;
+	overflow: auto;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.boton:hover {
+   background-color: #2E6DA4;
+   color: white;
+}
