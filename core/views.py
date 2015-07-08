@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.shortcuts import render_to_response
 from django.template.loader import get_template
-from core.models import Actividades
+from core.models import ActOcio
+from core.models import ActVivienda
+from core.models import ActEmpleo
 from django.template import Context
 
 from django.views.generic.list import ListView
@@ -20,15 +22,15 @@ import xml.sax
 def lista_eventos(request):
 
 	if request.method == "GET":
-		lista_actividades=[]
-		event= Actividades(Titulo="Concierto",Direccion="puerta del sol",Precio="30 $",Aforo_Max="completo",Hora="15:00",Imagen="../../static/images/imagen.png",Descripcion="lssdfsdf",Categoria="dsadas",Usuario_owner="ffsd",Tipo_User="E")	
-		event.save()
-		event1= Actividades(Titulo="300",Direccion="bambu",Precio="50 $",Aforo_Max="limitado",Hora="15:00",Imagen="../../static/images/imagen.png",Descripcion="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum posuere dolor, tempor pulvinar nisi interdum eget. Aliquam dui arcu, ornare vitae eros sed, hendrerit maximus mi. Cras feugiat auctor nisl, eu placerat enim. Aliquam sit amet libero tellus. Donec quis posuere sem. Aenean pellentesque eleifend lacus, quis ultrices urna placerat vel. Duis tempor purus eget felis luctus pharetra vitae vitae velit. Praesent erat ex, molestie id faucibus vel, aliquam aliquam lectus. Donec pharetra maximus turpis dictum tincidunt. Suspendisse fermentum orci ut placerat placerat. Praesent tincidunt augue lectus, quis mollis orci hendrerit ac. Donec imperdiet est a ultrices luctus.",Categoria="dsadas",Usuario_owner="ffsd",Tipo_User="E")	
+		#lista_actividades=[]
+		#event= Actividades(Titulo="Concierto",Direccion="puerta del sol",Precio="30 $",Aforo_Max="completo",Hora="15:00",Imagen="../../static/images/imagen.png",Descripcion="lssdfsdf",Categoria="dsadas",Usuario_owner="ffsd",Tipo_User="E")	
+		#event.save()
+		#event1= Actividades(Titulo="300",Direccion="bambu",Precio="50 $",Aforo_Max="limitado",Hora="15:00",Imagen="../../static/images/imagen.png",Descripcion="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum posuere dolor, tempor pulvinar nisi interdum eget. Aliquam dui arcu, ornare vitae eros sed, hendrerit maximus mi. Cras feugiat auctor nisl, eu placerat enim. Aliquam sit amet libero tellus. Donec quis posuere sem. Aenean pellentesque eleifend lacus, quis ultrices urna placerat vel. Duis tempor purus eget felis luctus pharetra vitae vitae velit. Praesent erat ex, molestie id faucibus vel, aliquam aliquam lectus. Donec pharetra maximus turpis dictum tincidunt. Suspendisse fermentum orci ut placerat placerat. Praesent tincidunt augue lectus, quis mollis orci hendrerit ac. Donec imperdiet est a ultrices luctus.",Categoria="dsadas",Usuario_owner="ffsd",Tipo_User="E")	
 	
-		event1.save()
+		#event1.save()
 		
-		record=Actividades.objects.all()
-		#record.delete()
+		record=ActOcio.objects.all()
+		record.delete()
 		template = get_template("listado.html")		
 		diccionario = {'record':record}		
 		return HttpResponse(template.render(Context(diccionario)))
@@ -59,12 +61,31 @@ def detalle(request, titulo):
 		return HttpResponse(template.render(Context(diccionario)))
 
 def ofertar(request):
-	if request.method == "GET":
-		titulo="Ofertar"
-		template = get_template("enConstruccion.html")
-		diccionario = {'titulo':titulo}
+
+	if request.method=="GET":		
+								
+		cab="Introduce el titulo actividad"
 		
+		template = get_template("form_ofertar.html")		
+		diccionario = {'cab':cab}		
 		return HttpResponse(template.render(Context(diccionario)))
+
+	elif request.method == "POST":			
+		#try:			
+		nom=request.POST['nombre']			
+		act=request.POST['activ']
+			
+		try:
+			record=ActOcio.objects.get(Titulo=nom,Direccion=act)
+		except:
+			Nueva_actividad=ActOcio(Titulo=nom,Direccion=act)
+			Nueva_actividad.save()			
+		return HttpResponseRedirect('/ofertar')		
+		#except:
+			#canal="<h1> la url del canal introducido no es valida</h1>"
+			#template = get_template("configurar_canales.html")
+			#diccionario = {'css_user':css,'usuario':enlace,'canal':canal}
+			#return HttpResponse(template.render(Context(diccionario)))
 
 def buscar(request):
 	if request.method == "GET":

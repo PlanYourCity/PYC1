@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+       	<p><center><h3>{{cab}}<br></center></p>
+					
+		<form method="post" action= "/ofertar">	
+		{% csrf_token %}		
+			url canal:<input type="text" name="nombre"/></br>
+			nombre canal:<input type="text" name="activ" /></br>
+			<input type="submit" value="Introducir" class="boton"/> 
+			<input type="reset" class="boton"/>
+		</form>
+{% endblock%}
