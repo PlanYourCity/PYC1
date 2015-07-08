@@ -16,7 +16,7 @@
 					Ciudad:
 				</div>
 				<div class="campo_rellenar">
-					<select class="entrada" name="ciudad">
+					<select class="entrada" name="Ciudad">
 						<option value='ACoruna' >A Coruña</option>
 				        <option value='Alava'>Álava</option>
 				        <option value='Albacete' >Albacete</option>
@@ -86,7 +86,7 @@
 					Título evento:
 				</div>
 				<div class="campo_rellenar">
-					<input class="entrada" type="text" name="Nombreevento" value=""/>
+					<input class="entrada" type="text" name="Titulo" value=""/>
 				</div>
 			</div>
 			<div class="float_items">
@@ -104,7 +104,7 @@
 						Precio (€):
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" name="precio" value=""/>
+						<input class="entrada" type="text" name="Precio" value=""/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -112,7 +112,7 @@
 						Aforo:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" name="aforo" value="" placeholder="Cantidad máxima de personas"/>
+						<input class="entrada" type="text" name="Aforo_max" value="" placeholder="Cantidad máxima de personas"/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -120,7 +120,7 @@
 						Fecha:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" id="datepicker" name="fecha"/>
+						<input class="entrada" type="text" id="datepicker" name="Fecha"/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -128,7 +128,7 @@
 						Hora:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" name="hora" value="" placeholder="HH:MM"/>	
+						<input class="entrada" type="text" name="Hora" value="" placeholder="HH:MM"/>	
 					</div>
 				</div>
 				<div class="float_items">
@@ -136,7 +136,7 @@
 						Imagen:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="file" name="imagen">
+						<input class="entrada" type="file" name="Imagen">
 					</div>
 				</div>
 			{% endifequal %}
@@ -149,7 +149,7 @@
 						Precio (€):
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" name="precio" value=""/>
+						<input class="entrada" type="text" name="Precio" value=""/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -157,7 +157,7 @@
 						Número de habitaciones:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" name="num_habitaciones" value=""/>
+						<input class="entrada" type="text" name="NumHab" value=""/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -165,8 +165,8 @@
 						Tipo:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="radio" name="tipo" value="alquiler" checked="checked">Alquiler<br>
-						<input class="entrada" type="radio" name="tipo" value="venta">Venta
+						<input class="entrada" type="radio" name="TipoOferta" value="alquiler" checked="checked">Alquiler<br>
+						<input class="entrada" type="radio" name="TipoOferta" value="venta">Venta
 					</div>
 				</div>
 				<div class="float_items">
@@ -174,7 +174,7 @@
 						Imagen:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="file" name="imagen">
+						<input class="entrada" type="file" name="Imagen">
 					</div>
 				</div>
 			{% endifequal %}
@@ -186,7 +186,7 @@
 						Sueldo (€):
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" name="sueldo" value=""/>
+						<input class="entrada" type="text" name="Sueldo" value=""/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -194,7 +194,7 @@
 						Plazas:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" name="plazas" value=""/>
+						<input class="entrada" type="text" name="Plazas" value=""/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -202,8 +202,8 @@
 						Duración del contrato:
 					</div>
 					<div class="campo_rellenar">
-						<select name="periodo">
-							<option class="entrada" class="entrada" value='horas'>Por horas</option>
+						<select name="Periodo">
+							<option class="entrada" value='horas'>Por horas</option>
 							<option class="entrada" value='3meses'>3 meses</option>
 							<option class="entrada" value='6meses'>6 meses</option>
 							<option class="entrada" value='1anyo'>1 año</option>
@@ -216,7 +216,7 @@
 						Imagen:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="file" name="imagen">
+						<input class="entrada" type="file" name="Imagen">
 					</div>
 				</div>
 			{% endifequal %}
