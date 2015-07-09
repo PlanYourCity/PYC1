@@ -9,7 +9,7 @@
 		<div id="title">
 			<h3>Formulario para ofertar {{categoria}}</h3>
     	</div>
-		<form method="post" action= "/ofertar/{{categoria}}">
+		<form method="post" action= "/ofertar/{{categoria}}/">
 		{% csrf_token %}
 			<div class="float_items">
 				<div class="campo">
@@ -112,7 +112,7 @@
 						Aforo:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" name="Aforo_Max" value="" placeholder="Cantidad máxima de personas"/>
+						<input class="entrada" type="number" name="Aforo_Max" value="" placeholder="Cantidad máxima de personas"/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -120,7 +120,7 @@
 						Fecha:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" id="datepicker" name="Fecha"/>
+						<input type="date" class="datepicker entrada" name="Fecha"/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -223,8 +223,8 @@
 
 
 			<div class="float_items">
-				<input type="submit" value="Confirmar" class="boton_formulario_ofertar"/> 
-				<input type="reset" class="boton_formulario_ofertar" onclick="return confirm('¿Seguro que quieres restablecer el formulario?')"/>
+				<input type="submit" value="Confirmar" class="boton_formulario"/> 
+				<input type="reset" class="boton_formulario" onclick="return confirm('¿Seguro que quieres restablecer el formulario?')"/>
 			</div>
 		</form>
 		</div>

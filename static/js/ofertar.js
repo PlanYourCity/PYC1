@@ -1,5 +1,5 @@
 $(function() {
-    $( "#datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker();
     $.datepicker.regional['es'] = {
         closeText: 'Cerrar',
         prevText: '<Ant',
