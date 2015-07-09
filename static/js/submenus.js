@@ -8,7 +8,7 @@ $('document').ready(function(){
 
 	$('.buscar').mouseleave(function(){
 		$('.submenuBuscar').animate({
-			"margin-left": "-150px"
+			"margin-left": "-260px"
 		}, 1000);
 	});
 
@@ -20,7 +20,7 @@ $('document').ready(function(){
 
 	$('.ofertar').mouseleave(function(){
 		$('.submenuOfertar').animate({
-			"margin-left": "-150px"
+			"margin-left": "-260px"
 		}, 1000);
 	});
 

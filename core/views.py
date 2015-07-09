@@ -25,7 +25,7 @@ def lista_eventos(request):
 		lista_actividades=[]
 		#event= ActOcio(Titulo="Concierto",Direccion="puerta del sol",Precio="30 $",Aforo_Max="completo",Hora="15:00",Imagen="../../static/images/imagen.png",Descripcion="lssdfsdf",Categoria="dsadas",Usuario_owner="ffsd",Tipo_User="E")	
 		#event.save()
-		#event1= ActOcio(Ciudad="Madrid", Titulo="Ruta Retiro",Direccion="Parque Retiro, Madrid",Precio="30")	
+		#vent1= ActOcio(Ciudad="Madrid", Titulo="Ruta Retiro",Direccion="Parque Retiro, Madrid",Precio="30")	
 		#event1.save()
 		
 		record=ActOcio.objects.all()
@@ -59,6 +59,7 @@ def detalle(request, titulo):
 		
 		return HttpResponse(template.render(Context(diccionario)))
 
+
 def ofertar(request,categoria):
 
 
@@ -91,7 +92,7 @@ def ofertar(request,categoria):
 			except:
 				Nueva_actividad_ocio=ActOcio(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=image,Precio=preci,Fecha=fech,Hora=hor,Aforo_Max=aforo_ma,Usuario_owner=propietari)
 				Nueva_actividad_ocio.save()			
-			return HttpResponseRedirect('/ofertar/ocio')
+			return HttpResponseRedirect("/ofertar/ocio")
 		elif categoria=="vivienda":
 			imagen=request.POST['Imagen']
 			precio=request.POST['Precio']
@@ -103,7 +104,7 @@ def ofertar(request,categoria):
 			except:
 				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,Usuario_owner=propietario)
 				Nueva_vivienda.save()			
-			return HttpResponseRedirect('/ofertar/vivienda')
+			return HttpResponseRedirect("/ofertar/vivienda")
 
 		elif categoria=="empleo":
 			sueldo=request.POST["Sueldo"]
@@ -116,7 +117,7 @@ def ofertar(request,categoria):
 			except:
 				Nueva_Empleo=ActEmpleo(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Sueldo=sueldo,Periodo=periodo,Plazas=plazas)
 				Nueva_Empleo.save()			
-			return HttpResponseRedirect('/ofertar/empleo')
+			return HttpResponseRedirect("/ofertar/empleo")
 		#else
 			#except:
 			#canal="<h1> la url del canal introducido no es valida</h1>"
@@ -171,7 +172,8 @@ def buscar(request,categoria):
 			precio=str(request.POST['precio'])
 			fechaDesde=str(request.POST['fDesde'])
 			fechaHasta=str(request.POST['fHasta'])
-			aforo=str(request.POST['aMax'])
+			numHab=str(request.POST['nHabit'])
+			tipoOfer=str(request.POST["tipo"])
 			record=ActOcio.objects.all()
 			try:
 				if titulo != "":
@@ -184,8 +186,10 @@ def buscar(request,categoria):
 					record=record.objects.filter(Fecha__gt=fechaDesde)
 				if fechaHasta != "":
 					record=record.objects.filter(Fecha__lt=fechaHasta)
-				if aforo != "":
-					record=record.objects.filter(Aforo_Max=aforo)
+				if tipoOfer != "":
+					record=record.objects.filter(TipoOferta=tipoOfer)
+				if numHab != "":
+					record=record.objects.filter(NumHab=numHab)
 		
 				template = get_template("listado.html")		
 				diccionario = {'record':record}	
@@ -197,24 +201,18 @@ def buscar(request,categoria):
 				return HttpResponse(template.render(Context("No existe actividad que cumpla los requisitos")))
 
 		if categoria=="empleo":	
-			precio=str(request.POST['precio'])
-			fechaDesde=str(request.POST['fDesde'])
-			fechaHasta=str(request.POST['fHasta'])
-			aforo=str(request.POST['aMax'])
+			sueldo=str(request.POST['sueldo'])
+			periodo=str(request.POST['periodo'])
 			record=ActOcio.objects.all()
 			try:
 				if titulo != "":
 					record=record.objects.filter(Titulo=titulo)
 				if ciudad != "":
 					record=record.objects.filter(Ciudad=ciudad)
-				if precio != "":
-					record=record.objects.filter(Precio=precio)
-				if fechaDesde != "":
-					record=record.objects.filter(Fecha__gt=fechaDesde)
-				if fechaHasta != "":
-					record=record.objects.filter(Fecha__lt=fechaHasta)
-				if aforo != "":
-					record=record.objects.filter(Aforo_Max=aforo)
+				if sueldo != "":
+					record=record.objects.filter(Sueldo=sueldo)
+				if periodo != "":
+					record=record.objects.filter(Periodo=periodo)
 		
 				template = get_template("listado.html")		
 				diccionario = {'record':record}	
