@@ -101,7 +101,7 @@ def ofertar(request,categoria):
 			toferta=request.POST['TipoOferta']		
 			propietario='Fabio'
 			try:
-				record=ActVivienda.objects.get(Titulo=titulo)
+				record=ActVivienda.objects.get(Titulo=titul)
 			except:
 				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,TipoOferta=toferta,Usuario_owner=propietario)
 				Nueva_vivienda.save()			
@@ -114,7 +114,7 @@ def ofertar(request,categoria):
 			propietario="Juanpe"
 
 			try:
-				record=ActEmpleo.objects.get(Titulo=titulo)
+				record=ActEmpleo.objects.get(Titulo=titul)
 			except:
 				Nueva_Empleo=ActEmpleo(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Sueldo=sueldo,Periodo=periodo,Plazas=plazas)
 				Nueva_Empleo.save()			
