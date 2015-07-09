@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 	{% block content %}
 		<h3>Resultados de la busqueda</h3>
-		Esto es:{{categoria}}
 		{% ifequal categoria "ocio" %}
 			{% for i in record %}	
 				<div class="evento">
