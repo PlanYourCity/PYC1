@@ -1,6 +1,7 @@
 $('document').ready(function(){
 
 	$('.buscar').mouseenter(function(){
+
 		$('.submenuBuscar').animate({
 			"margin-left": "0px"
 		}, 1000);

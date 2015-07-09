@@ -16,12 +16,13 @@ from xml.sax import make_parser
 import sys
 import string
 import xml.sax
+import json
 
 # Create your views here.
 #def Detalles(request):
 def lista_eventos(request):
 
-	diccionario = {'categoria':categoria}
+	#diccionario = {'categoria':categoria}
 
 	if request.method == "GET":
 		lista_actividades=[]
@@ -67,8 +68,8 @@ def ofertar(request,categoria):
 		diccionario = {'categoria':categoria}		
 		return HttpResponse(template.render(Context(diccionario)))
 
-	elif request.method == "POST":			
-		
+	elif request.method == "POST":
+		#respuesta = {}			
 		ciuda=request.POST['Ciudad']
 		direccio=request.POST['Direccion']
 		titul=request.POST['Titulo']
@@ -99,10 +100,14 @@ def ofertar(request,categoria):
 			propietario='Fabio'
 			try:
 				record=ActVivienda.objects.get(Titulo=titulo)
+				#response = {'message': False}
 			except:
 				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,Usuario_owner=propietario)
-				Nueva_vivienda.save()			
+				Nueva_vivienda.save()
+				#response = {'message': True}
 			return HttpResponseRedirect("/ofertar/vivienda")
+
+			#return HttpResponse(json.dumps(response), content_type="application/json")
 
 		elif categoria=="empleo":
 			sueldo=request.POST["Sueldo"]

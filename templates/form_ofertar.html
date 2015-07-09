@@ -9,8 +9,9 @@
 		<div id="title">
 			<h1>Formulario para ofertar &nbsp;{{categoria}}</h1>
     	</div>
-		<form method="post" action= "/ofertar/{{categoria}}/">
+		<form id="formOfertar" method="post"> <!--action= "/ofertar/{{categoria}}/"-->
 		{% csrf_token %}
+			<input type="hidden" name="category" value="{{categoria}}">
 			<div class="float_items">
 				<div class="campo">
 					Ciudad:
@@ -180,7 +181,7 @@
 			{% endifequal %}
 
 
-			{% ifequal categ "empleo" %}
+			{% ifequal categoria "empleo" %}
 				<div class="float_items">
 					<div class="campo">
 						Sueldo (€):
@@ -223,7 +224,7 @@
 
 
 			<div class="float_items">
-				<input type="submit" value="Confirmar" class="boton"/> 
+				<input type="submit" value="Confirmar" class="boton botonesForm"/> 
 				<input type="reset" class="boton" onclick="return confirm('¿Seguro que quieres restablecer el formulario?')"/>
 			</div>
 		</form>
