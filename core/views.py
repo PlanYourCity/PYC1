@@ -21,15 +21,12 @@ import json
 # Create your views here.
 #def Detalles(request):
 
-<<<<<<< HEAD
-	#diccionario = {'categoria':categoria}
-=======
+
 def inicio(request):
 	template = get_template("base.html")				
 	return HttpResponse(template.render(Context()))	
 
 def lista_eventos(request):
->>>>>>> dea435592a79de3b456f0678a661fb272e3ecd50
 
 	if request.method == "GET":
 		lista_actividades=[]
@@ -106,19 +103,12 @@ def ofertar(request,categoria):
 			toferta=request.POST['TipoOferta']		
 			propietario='Fabio'
 			try:
-<<<<<<< HEAD
 				record=ActVivienda.objects.get(Titulo=titulo)
 				#response = {'message': False}
 			except:
 				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,Usuario_owner=propietario)
 				Nueva_vivienda.save()
 				#response = {'message': True}
-=======
-				record=ActVivienda.objects.get(Titulo=titul)
-			except:
-				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,TipoOferta=toferta,Usuario_owner=propietario)
-				Nueva_vivienda.save()			
->>>>>>> dea435592a79de3b456f0678a661fb272e3ecd50
 			return HttpResponseRedirect("/ofertar/vivienda")
 
 			#return HttpResponse(json.dumps(response), content_type="application/json")
