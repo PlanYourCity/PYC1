@@ -25,3 +25,5 @@ urlpatterns = [
         url(r'^buscar/(?P<categoria>.+)/$', coreviews.buscar),
         url(r'^calendario', coreviews.calendario),
 ]
+
+
