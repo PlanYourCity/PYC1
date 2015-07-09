@@ -1,29 +1,80 @@
 {% extends 'base.html' %}
 	{% block content %}
 		<h3>Resultados de la busqueda</h3>
-		{% for i in record %} 	
-			<div class="evento">
-				<div class="imagenEvento">
-					<img src={{i.Imagen}}>
-				</div>
+		{% ifequal categoria "ocio" %}
+			{% for i in record %}	
+				<div class="evento">
+					<div class="imagenEvento">
+						<img src={{i.Imagen}}>
+					</div>
 
-				<div class="detallesEvento">
-					<h3>{{i.Titulo}}</h3>
-					<div class="datosEvento">
-						<p>Dirección: {{i.Direccion}}</p>
-						<div class="datos">
-							<div>Aforo actual: {{i.Aforo_actual}} </div>
-							<div>Aforo máx.: {{i.Aforo_Max}}</div>
-							<div>Hora: {{i.Hora}}</div>
+					<div class="detallesEvento">
+						<h3>{{i.Titulo}}</h3>
+						<div class="datosEvento">
+							<p>Ciudad: {{i.Ciudad}}</p>
+							<p>Dirección: {{i.Direccion}}</p>
+							<div class="datos">
+								<div>Hora: {{i.Hora}}</div>
+							</div>
+						</div>
+
+						<div class="precio">
+							{{i.Precio}} €
 						</div>
 					</div>
+				</div>
+			{% endfor %}
+		{% endifequal %}
 
-					<div class="precio">
-						{{i.Precio}}
+		{% ifequal categoria "vivienda" %}
+			{% for i in record %}
+				<div class="evento">
+					<div class="imagenEvento">
+						<img src={{i.Imagen}}>
+					</div>
+
+					<div class="detallesEvento">
+						<h3>{{i.Titulo}}</h3>
+						<div class="datosEvento">
+							<p>Ciudad: {{i.Ciudad}}</p>
+							<p>Dirección: {{i.Direccion}}</p>
+							<div class="datos">
+								<div>Num. Habitaciones: {{i.NumHab}}</div>
+							</div>
+						</div>
+
+						<div class="precio">
+							{{i.Precio}} €
+						</div>
 					</div>
 				</div>
-			</div>
-		{% endfor %}
+			{% endfor %}
+		{% endifequal %}
+
+		{% ifequal categoria "empleo" %}
+			{% for i in record %}
+				<div class="evento">
+					<div class="imagenEvento">
+						<img src={{i.Imagen}}>
+					</div>
+
+					<div class="detallesEvento">
+						<h3>{{i.Titulo}}</h3>
+						<div class="datosEvento">
+							<p>Ciudad: {{i.Ciudad}}</p>
+							<div class="datos">
+								<div>Periodo: {{i.Periodo}}</div>
+							</div>
+						</div>
+
+						<div class="precio">
+							{{i.Sueldo}} €
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% endifequal %}
+
 		<br></br>
 	{% endblock %}
 

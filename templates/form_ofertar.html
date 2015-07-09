@@ -7,7 +7,7 @@
 
     	<div id="oferta">
 		<div id="title">
-			<h1>Formulario para ofertar &nbsp;{{categoria}}</h1>
+			<h3>Formulario para ofertar {{categoria}}</h3>
     	</div>
 		<form id="formOfertar" method="post"> <!--action= "/ofertar/{{categoria}}/"-->
 		{% csrf_token %}
@@ -113,7 +113,7 @@
 						Aforo:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" name="Aforo_max" value="" placeholder="Cantidad máxima de personas"/>
+						<input class="entrada" type="number" name="Aforo_Max" value="" placeholder="Cantidad máxima de personas"/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -121,7 +121,7 @@
 						Fecha:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="text" id="datepicker" name="Fecha"/>
+						<input type="date" class="datepicker entrada" name="Fecha"/>
 					</div>
 				</div>
 				<div class="float_items">
@@ -165,9 +165,9 @@
 					<div class="campo">
 						Tipo:
 					</div>
-					<div class="campo_rellenar">
-						<input class="entrada" type="radio" name="TipoOferta" value="alquiler" checked="checked">Alquiler<br>
-						<input class="entrada" type="radio" name="TipoOferta" value="venta">Venta
+					<div class="campo_rellenar" class="entrada">
+						<input type="radio" name="TipoOferta" value="alquiler" checked="checked"> Alquiler<br>
+						<input type="radio" name="TipoOferta" value="venta"> Venta
 					</div>
 				</div>
 				<div class="float_items">
@@ -203,12 +203,13 @@
 						Duración del contrato:
 					</div>
 					<div class="campo_rellenar">
-						<select name="Periodo">
-							<option class="entrada" value='horas'>Por horas</option>
-							<option class="entrada" value='3meses'>3 meses</option>
-							<option class="entrada" value='6meses'>6 meses</option>
-							<option class="entrada" value='1anyo'>1 año</option>
-							<option class="entrada" value='indefinido'>Indefinido</option>
+						<select class="entrada" name="Periodo">
+							<option value="">Indiferente</option>
+							<option value="horas">Por horas</option>
+							<option value='3m'>3 meses</option>
+							<option value='6m'>6 meses</option>
+							<option value='1anno'>1 año</option>
+							<option value='indef'>Indefinido</option>
 						</select>
 					</div>
 				</div>
@@ -224,8 +225,13 @@
 
 
 			<div class="float_items">
+<<<<<<< HEAD
 				<input type="submit" value="Confirmar" class="boton botonesForm"/> 
 				<input type="reset" class="boton" onclick="return confirm('¿Seguro que quieres restablecer el formulario?')"/>
+=======
+				<input type="submit" value="Confirmar" class="boton_formulario"/> 
+				<input type="reset" class="boton_formulario" onclick="return confirm('¿Seguro que quieres restablecer el formulario?')"/>
+>>>>>>> dea435592a79de3b456f0678a661fb272e3ecd50
 			</div>
 		</form>
 		</div>

@@ -20,9 +20,16 @@ import json
 
 # Create your views here.
 #def Detalles(request):
-def lista_eventos(request):
 
+<<<<<<< HEAD
 	#diccionario = {'categoria':categoria}
+=======
+def inicio(request):
+	template = get_template("base.html")				
+	return HttpResponse(template.render(Context()))	
+
+def lista_eventos(request):
+>>>>>>> dea435592a79de3b456f0678a661fb272e3ecd50
 
 	if request.method == "GET":
 		lista_actividades=[]
@@ -83,7 +90,7 @@ def ofertar(request,categoria):
 			preci=request.POST['Precio']
 			fech=request.POST['Fecha']	
 			hor=request.POST['Hora']	
-			aforo_ma=request.POST['Aforo_max']	
+			aforo_ma=request.POST['Aforo_Max']	
 			propietari='Youssef'
 
 			try:
@@ -99,12 +106,19 @@ def ofertar(request,categoria):
 			toferta=request.POST['TipoOferta']		
 			propietario='Fabio'
 			try:
+<<<<<<< HEAD
 				record=ActVivienda.objects.get(Titulo=titulo)
 				#response = {'message': False}
 			except:
 				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,Usuario_owner=propietario)
 				Nueva_vivienda.save()
 				#response = {'message': True}
+=======
+				record=ActVivienda.objects.get(Titulo=titul)
+			except:
+				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,TipoOferta=toferta,Usuario_owner=propietario)
+				Nueva_vivienda.save()			
+>>>>>>> dea435592a79de3b456f0678a661fb272e3ecd50
 			return HttpResponseRedirect("/ofertar/vivienda")
 
 			#return HttpResponse(json.dumps(response), content_type="application/json")
@@ -116,7 +130,7 @@ def ofertar(request,categoria):
 			propietario="Juanpe"
 
 			try:
-				record=ActEmpleo.objects.get(Titulo=titulo)
+				record=ActEmpleo.objects.get(Titulo=titul)
 			except:
 				Nueva_Empleo=ActEmpleo(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Sueldo=sueldo,Periodo=periodo,Plazas=plazas)
 				Nueva_Empleo.save()			
@@ -130,6 +144,7 @@ def ofertar(request,categoria):
 
 
 def buscar(request,categoria):
+
 	if request.method=="GET":		
 									
 		template = get_template("busqueda.html")		
@@ -147,81 +162,88 @@ def buscar(request,categoria):
 			fechaDesde=str(request.POST['fDesde'])
 			fechaHasta=str(request.POST['fHasta'])
 			aforo=str(request.POST['aMax'])
+			direc= str(request.POST['direccion'])
 			record=ActOcio.objects.all()
-			try:
-				if titulo != "":
-					record=record.objects.filter(Titulo=titulo)
-				if ciudad != "":
-					record=record.objects.filter(Ciudad=ciudad)
-				if precio != "":
-					record=record.objects.filter(Precio=precio)
-				if fechaDesde != "":
-					record=record.objects.filter(Fecha__gt=fechaDesde)
-				if fechaHasta != "":
-					record=record.objects.filter(Fecha__lt=fechaHasta)
-				if aforo != "":
-					record=record.objects.filter(Aforo_Max=aforo)
-		
+			
+			if titulo!="":
+				record=record.filter(Titulo=titulo)
+			if ciudad != "":
+				record=record.filter(Ciudad=ciudad)
+			if precio != "":
+				record=record.filter(Precio=precio)
+			if fechaDesde != "":
+				record=record.filter(Fecha__gt=fechaDesde)
+			if fechaHasta != "":
+				record=record.filter(Fecha__lt=fechaHasta)
+			if aforo != "":
+				record=record.filter(Aforo_Max=aforo)
+			if direc != "":
+				record=record.filter(Direccion=direc)
+
+			if record != []:
 				template = get_template("listado.html")		
-				diccionario = {'record':record}	
+				diccionario = {'record':record,'categoria':categoria}	
 				return HttpResponse(template.render(Context(diccionario)))
 
-			except:
+			else:
 				print("estoy aqui")
 				template = get_template("listado.html")		
 				return HttpResponse(template.render(Context("No existe actividad que cumpla los requisitos")))
+
 
 		if categoria=="vivienda":	
+			record=""
 			precio=str(request.POST['precio'])
-			fechaDesde=str(request.POST['fDesde'])
-			fechaHasta=str(request.POST['fHasta'])
 			numHab=str(request.POST['nHabit'])
 			tipoOfer=str(request.POST["tipo"])
-			record=ActOcio.objects.all()
-			try:
-				if titulo != "":
-					record=record.objects.filter(Titulo=titulo)
-				if ciudad != "":
-					record=record.objects.filter(Ciudad=ciudad)
-				if precio != "":
-					record=record.objects.filter(Precio=precio)
-				if fechaDesde != "":
-					record=record.objects.filter(Fecha__gt=fechaDesde)
-				if fechaHasta != "":
-					record=record.objects.filter(Fecha__lt=fechaHasta)
-				if tipoOfer != "":
-					record=record.objects.filter(TipoOferta=tipoOfer)
-				if numHab != "":
-					record=record.objects.filter(NumHab=numHab)
-		
+			direc= str(request.POST['direccion'])
+			record=ActVivienda.objects.all()
+			
+			if titulo != "":
+				record=record.filter(Titulo=titulo)
+			if ciudad != "":
+				record=record.filter(Ciudad=ciudad)
+			if precio != "":
+				record=record.filter(Precio=precio)
+			if tipoOfer != "":
+				record=record.filter(TipoOferta=tipoOfer)
+			if numHab != "":
+				record=record.filter(NumHab=numHab)
+			if direc != "":
+				record=record.filter(Direccion=direc)
+	
+			if record != []:
 				template = get_template("listado.html")		
-				diccionario = {'record':record}	
+				print(categoria)
+				diccionario = {'record':record,'categoria':categoria}	
 				return HttpResponse(template.render(Context(diccionario)))
 
-			except:
+			else:
 				print("estoy aqui")
 				template = get_template("listado.html")		
 				return HttpResponse(template.render(Context("No existe actividad que cumpla los requisitos")))
+
 
 		if categoria=="empleo":	
 			sueldo=str(request.POST['sueldo'])
 			periodo=str(request.POST['periodo'])
-			record=ActOcio.objects.all()
-			try:
-				if titulo != "":
-					record=record.objects.filter(Titulo=titulo)
-				if ciudad != "":
-					record=record.objects.filter(Ciudad=ciudad)
-				if sueldo != "":
-					record=record.objects.filter(Sueldo=sueldo)
-				if periodo != "":
-					record=record.objects.filter(Periodo=periodo)
+			record=ActEmpleo.objects.all()
+			
+			if titulo != "":
+				record=record.filter(Titulo=titulo)
+			if ciudad != "":
+				record=record.filter(Ciudad=ciudad)
+			if sueldo != "":
+				record=record.filter(Sueldo=sueldo)
+			if periodo != "":
+				record=record.filter(Periodo=periodo)
 		
+			if record != []:
 				template = get_template("listado.html")		
-				diccionario = {'record':record}	
+				diccionario = {'record':record,'categoria':categoria}	
 				return HttpResponse(template.render(Context(diccionario)))
 
-			except:
+			else:
 				print("estoy aqui")
 				template = get_template("listado.html")		
 				return HttpResponse(template.render(Context("No existe actividad que cumpla los requisitos")))

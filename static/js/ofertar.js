@@ -1,5 +1,5 @@
 $(function() {
-    $( "#datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker();
     $.datepicker.regional['es'] = {
         closeText: 'Cerrar',
         prevText: '<Ant',
@@ -15,7 +15,8 @@ $(function() {
         firstDay: 1,
         isRTL: false,
         showMonthAfterYear: false,
-        yearSuffix: ''
+        yearSuffix: '',
+        minDate: 0
     };
     $.datepicker.setDefaults($.datepicker.regional['es']);
 });

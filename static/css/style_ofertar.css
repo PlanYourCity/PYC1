@@ -8,7 +8,7 @@
 
 .float_items {
 	margin: 10px;
-	width: 100%;
+	width: 90%;
 	float: left;
 	clear: both;
 }
@@ -16,6 +16,7 @@
 .campo {
 	font-size: 16px;
 	text-align: left;
+	font-weight: bold;
 	vertical-align: middle;
 	width: 20%;
 	float: left;
@@ -30,13 +31,16 @@
 
 .entrada {
 	font-size: 16px;
+	width: 30em;
 }
 
-.boton {
+.boton_formulario {
 	text-align: center;
 	font-size: 18px;
 	font-weight: bold;
+	width: 100%;
 	margin-right: 10%;
+	margin-top: 2%;
 	padding: 15px;
 	border: none;
 	background-color: #337AB7;
@@ -51,7 +55,7 @@
     transition: all 0.5s ease;
 }
 
-.boton:hover {
+.boton_formulario:hover {
    background-color: #2E6DA4;
    color: white;
 }

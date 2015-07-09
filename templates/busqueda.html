@@ -90,16 +90,21 @@
 				<input type="date" name="fHasta">
 				<br/>
 			{% endifequal %}
+			
 			{% ifequal categ "empleo" %}
-				<label>Periodo</label>
-				<select name="periodo">
-					<option value="horas">Por horas</option>
-					<option value="3m">3 meses</option>
-					<option value="6m">6 meses</option>
-					<option value="1anno">1 año</option>
-					<option value="indef">Indefinido</option>
-				</select>
-				<br/>
+				<div class="float_items">
+					<label class="campo">Periodo:</label>
+					<div class="campo_rellenar">
+						<select class="entrada" name="periodo">
+                           <option value="">Indiferente</option>
+                           <option value="horas">Por horas</option>
+                           <option value="3m">3 meses</option>
+                           <option value="6m">6 meses</option>
+                           <option value="1anno">1 año</option>
+                           <option value="indef">Indefinido</option>
+                       </select>
+					</div>
+				</div>
 			{% endifequal %}
 				
 			{% ifequal categ  "ocio" %}
