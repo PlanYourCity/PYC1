@@ -21,12 +21,10 @@ import xml.sax
 #def Detalles(request):
 def lista_eventos(request):
 
+	diccionario = {'categoria':categoria}
+
 	if request.method == "GET":
 		lista_actividades=[]
-		#event= ActOcio(Titulo="Concierto",Direccion="puerta del sol",Precio="30 $",Aforo_Max="completo",Hora="15:00",Imagen="../../static/images/imagen.png",Descripcion="lssdfsdf",Categoria="dsadas",Usuario_owner="ffsd",Tipo_User="E")	
-		#event.save()
-		#vent1= ActOcio(Ciudad="Madrid", Titulo="Ruta Retiro",Direccion="Parque Retiro, Madrid",Precio="30")	
-		#event1.save()
 		
 		record=ActOcio.objects.all()
 		#record.delete()
@@ -84,7 +82,7 @@ def ofertar(request,categoria):
 			preci=request.POST['Precio']
 			fech=request.POST['Fecha']	
 			hor=request.POST['Hora']	
-			aforo_ma=request.POST['Aforo_Max']	
+			aforo_ma=request.POST['Aforo_max']	
 			propietari='Youssef'
 
 			try:
