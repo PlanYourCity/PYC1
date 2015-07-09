@@ -27,6 +27,10 @@ h3{
 	font-family: Babaca !important;
 }
 
+.menu {
+	border: 0px !important;
+}
+
 #menuLateral{
 	float: left;
 	height: 100%;
@@ -47,6 +51,29 @@ h3{
 	margin-left: 0px !important;
 	background-color: #E6EAEE;
 	border-color: #002142 !important;
+}
+
+.submenuBuscar{
+	position: absolute;
+	margin-top: -70%;
+	margin-left: -150px;
+	border: 1px solid black;
+	border-radius: 6px;
+	border-color: #002142;
+}
+
+.submenuOfertar{
+	position: absolute;
+	margin-top: -70%;
+	margin-left: -150px;
+	border: 1px solid black;
+	border-radius: 6px;
+	border-color: #002142;
+}
+
+.submenuBuscar li{
+	margin: 10%;
+	list-style-type: none;
 }
 
 .boton{

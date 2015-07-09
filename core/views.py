@@ -68,6 +68,30 @@ def ofertar(request,categoria):
 		return HttpResponse(template.render(Context(diccionario)))
 
 	elif request.method == "POST":			
+<<<<<<< HEAD
+=======
+		#try:			
+		nom=request.POST['nombre']			
+		act=request.POST['activ']
+			
+		try:
+			record=ActOcio.objects.get(Titulo=nom,Direccion=act)
+		except:
+			Nueva_actividad=ActOcio(Titulo=nom,Direccion=act)
+			Nueva_actividad.save()			
+		return HttpResponseRedirect('/ofertar')		
+		#except:
+			#canal="<h1> la url del canal introducido no es valida</h1>"
+			#template = get_template("configurar_canales.html")
+			#diccionario = {'css_user':css,'usuario':enlace,'canal':canal}
+			#return HttpResponse(template.render(Context(diccionario)))
+
+def buscar(request):
+	if request.method == "GET":
+		titulo="Buscar"
+		template = get_template("busqueda.html")
+		diccionario = {'titulo':titulo}
+>>>>>>> 4ebf52830926bb48d9267e9837558823ef291b9f
 		
 		ciuda=request.POST['Ciudad']
 		direccio=request.POST['Direccion']
