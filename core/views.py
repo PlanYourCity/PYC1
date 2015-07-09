@@ -21,7 +21,6 @@ import xml.sax
 #def Detalles(request):
 def lista_eventos(request):
 
-	diccionario = {'categoria':categoria}
 
 	if request.method == "GET":
 		lista_actividades=[]
@@ -143,25 +142,26 @@ def buscar(request,categoria):
 			fechaHasta=str(request.POST['fHasta'])
 			aforo=str(request.POST['aMax'])
 			record=ActOcio.objects.all()
-			try:
-				if titulo != "":
-					record=record.objects.filter(Titulo=titulo)
-				if ciudad != "":
-					record=record.objects.filter(Ciudad=ciudad)
-				if precio != "":
-					record=record.objects.filter(Precio=precio)
-				if fechaDesde != "":
-					record=record.objects.filter(Fecha__gt=fechaDesde)
-				if fechaHasta != "":
-					record=record.objects.filter(Fecha__lt=fechaHasta)
-				if aforo != "":
-					record=record.objects.filter(Aforo_Max=aforo)
-		
+			
+			if titulo!="":
+				record=record.filter(Titulo=titulo)
+			if ciudad != "":
+				record=record.filter(Ciudad=ciudad)
+			if precio != "":
+				record=record.filter(Precio=precio)
+			if fechaDesde != "":
+				record=record.filter(Fecha__gt=fechaDesde)
+			if fechaHasta != "":
+				record=record.filter(Fecha__lt=fechaHasta)
+			if aforo != "":
+				record=record.filter(Aforo_Max=aforo)
+
+			if record != []:
 				template = get_template("listado.html")		
 				diccionario = {'record':record}	
 				return HttpResponse(template.render(Context(diccionario)))
 
-			except:
+			else:
 				print("estoy aqui")
 				template = get_template("listado.html")		
 				return HttpResponse(template.render(Context("No existe actividad que cumpla los requisitos")))
@@ -172,22 +172,22 @@ def buscar(request,categoria):
 			fechaHasta=str(request.POST['fHasta'])
 			numHab=str(request.POST['nHabit'])
 			tipoOfer=str(request.POST["tipo"])
-			record=ActOcio.objects.all()
+			record=ActVivienda.objects.all()
 			try:
 				if titulo != "":
-					record=record.objects.filter(Titulo=titulo)
+					record=record.filter(Titulo=titulo)
 				if ciudad != "":
-					record=record.objects.filter(Ciudad=ciudad)
+					record=record.filter(Ciudad=ciudad)
 				if precio != "":
-					record=record.objects.filter(Precio=precio)
+					record=record.filter(Precio=precio)
 				if fechaDesde != "":
-					record=record.objects.filter(Fecha__gt=fechaDesde)
+					record=record.filter(Fecha__gt=fechaDesde)
 				if fechaHasta != "":
-					record=record.objects.filter(Fecha__lt=fechaHasta)
+					record=record.filter(Fecha__lt=fechaHasta)
 				if tipoOfer != "":
-					record=record.objects.filter(TipoOferta=tipoOfer)
+					record=record.filter(TipoOferta=tipoOfer)
 				if numHab != "":
-					record=record.objects.filter(NumHab=numHab)
+					record=record.filter(NumHab=numHab)
 		
 				template = get_template("listado.html")		
 				diccionario = {'record':record}	
@@ -201,16 +201,16 @@ def buscar(request,categoria):
 		if categoria=="empleo":	
 			sueldo=str(request.POST['sueldo'])
 			periodo=str(request.POST['periodo'])
-			record=ActOcio.objects.all()
+			record=ActEmpleo.objects.all()
 			try:
 				if titulo != "":
-					record=record.objects.filter(Titulo=titulo)
+					record=record.filter(Titulo=titulo)
 				if ciudad != "":
-					record=record.objects.filter(Ciudad=ciudad)
+					record=record.filter(Ciudad=ciudad)
 				if sueldo != "":
-					record=record.objects.filter(Sueldo=sueldo)
+					record=record.filter(Sueldo=sueldo)
 				if periodo != "":
-					record=record.objects.filter(Periodo=periodo)
+					record=record.filter(Periodo=periodo)
 		
 				template = get_template("listado.html")		
 				diccionario = {'record':record}	
