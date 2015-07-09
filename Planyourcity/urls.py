@@ -19,7 +19,8 @@ import core.views as coreviews
 
 urlpatterns = [
     	url(r'^admin/', include(admin.site.urls)),
-    	url(r'listado', coreviews.lista_eventos),
+        url(r'index/', coreviews.inicio),
+    	url(r'listado/$', coreviews.lista_eventos),
 	    url(r'^detalle/(?P<titulo>.+)/$', coreviews.detalle),
         url(r'^ofertar/(?P<categoria>.+)/$', coreviews.ofertar),
         url(r'^buscar/(?P<categoria>.+)/$', coreviews.buscar),
