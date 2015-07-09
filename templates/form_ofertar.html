@@ -7,7 +7,7 @@
 
     	<div id="oferta">
 		<div id="title">
-			<h1>Formulario para ofertar &nbsp;{{categoria}}</h1>
+			<h1>Formulario para ofertar&nbsp;{{categoria}}</h1>
     	</div>
 		<form method="post" action= "/ofertar/{{categoria}}">
 		{% csrf_token %}
@@ -223,8 +223,8 @@
 
 
 			<div class="float_items">
-				<input type="submit" value="Confirmar" class="boton"/> 
-				<input type="reset" class="boton" onclick="return confirm('¿Seguro que quieres restablecer el formulario?')"/>
+				<input type="submit" value="Confirmar" class="boton_formulario_ofertar"/> 
+				<input type="reset" class="boton_formulario_ofertar" onclick="return confirm('¿Seguro que quieres restablecer el formulario?')"/>
 			</div>
 		</form>
 		</div>
