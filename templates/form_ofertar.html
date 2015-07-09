@@ -9,7 +9,7 @@
 		<div id="title">
 			<h1>Formulario para ofertar &nbsp;{{categoria}}</h1>
     	</div>
-		<form method="post" action= "/ofertar/ocio">
+		<form method="post" action= "/ofertar/{{categoria}}">
 		{% csrf_token %}
 			<div class="float_items">
 				<div class="campo">

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 	{% block content %}
-		<h3>Buscar</h3>
+		<h3>Buscar {{ categ }}</h3>
 		<form action="{% url 'core.views.buscar' categ %}" method="POST">
 			<label>Título</label>
 			<input type="text" name="titulo">
