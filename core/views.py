@@ -19,8 +19,12 @@ import xml.sax
 
 # Create your views here.
 #def Detalles(request):
-def lista_eventos(request):
 
+def inicio(request):
+	template = get_template("base.html")				
+	return HttpResponse(template.render(Context()))	
+
+def lista_eventos(request):
 
 	if request.method == "GET":
 		lista_actividades=[]
@@ -81,7 +85,7 @@ def ofertar(request,categoria):
 			preci=request.POST['Precio']
 			fech=request.POST['Fecha']	
 			hor=request.POST['Hora']	
-			aforo_ma=request.POST['Aforo_max']	
+			aforo_ma=request.POST['Aforo_Max']	
 			propietari='Youssef'
 
 			try:
@@ -124,6 +128,7 @@ def ofertar(request,categoria):
 
 
 def buscar(request,categoria):
+
 	if request.method=="GET":		
 									
 		template = get_template("busqueda.html")		
@@ -141,6 +146,7 @@ def buscar(request,categoria):
 			fechaDesde=str(request.POST['fDesde'])
 			fechaHasta=str(request.POST['fHasta'])
 			aforo=str(request.POST['aMax'])
+			direc= str(request.POST['direccion'])
 			record=ActOcio.objects.all()
 			
 			if titulo!="":
@@ -155,10 +161,12 @@ def buscar(request,categoria):
 				record=record.filter(Fecha__lt=fechaHasta)
 			if aforo != "":
 				record=record.filter(Aforo_Max=aforo)
+			if direc != "":
+				record=record.filter(Direccion=direc)
 
 			if record != []:
 				template = get_template("listado.html")		
-				diccionario = {'record':record}	
+				diccionario = {'record':record,'categoria':categoria}	
 				return HttpResponse(template.render(Context(diccionario)))
 
 			else:
