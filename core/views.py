@@ -156,7 +156,7 @@ def buscar(request,categoria):
 			record=ActOcio.objects.all()
 			
 			if titulo!="":
-				record=record.filter(Titulo=titulo)
+				record=record.filter(Titulo__contains = titulo)
 			if ciudad != "":
 				record=record.filter(Ciudad=ciudad)
 			if precio != "":
@@ -168,7 +168,7 @@ def buscar(request,categoria):
 			if aforo != "":
 				record=record.filter(Aforo_Max=aforo)
 			if direc != "":
-				record=record.filter(Direccion=direc)
+				record=record.filter(Direccion__contains=direc)
 
 			if record != []:
 				template = get_template("listado.html")		
@@ -190,7 +190,7 @@ def buscar(request,categoria):
 			record=ActVivienda.objects.all()
 			
 			if titulo != "":
-				record=record.filter(Titulo=titulo)
+				record=record.filter(Titulo__contains = titulo)
 			if ciudad != "":
 				record=record.filter(Ciudad=ciudad)
 			if precio != "":
@@ -200,7 +200,7 @@ def buscar(request,categoria):
 			if numHab != "":
 				record=record.filter(NumHab=numHab)
 			if direc != "":
-				record=record.filter(Direccion=direc)
+				record=record.filter(Direccion__contains=direc)
 	
 			if record != []:
 				template = get_template("listado.html")		
@@ -220,7 +220,7 @@ def buscar(request,categoria):
 			record=ActEmpleo.objects.all()
 			
 			if titulo != "":
-				record=record.filter(Titulo=titulo)
+				record=record.filter(Titulo__contains=titulo)
 			if ciudad != "":
 				record=record.filter(Ciudad=ciudad)
 			if sueldo != "":
