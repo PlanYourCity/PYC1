@@ -7,19 +7,18 @@
 					<div class="imagenEvento">
 						<img src={{i.Imagen}}>
 					</div>
-
 					<div class="detallesEvento">
 						<h3>{{i.Titulo}}</h3>
 						<div class="datosEvento">
 							<p>Ciudad: {{i.Ciudad}}</p>
 							<p>Dirección: {{i.Direccion}}</p>
 							<div class="datos">
-								<div>Hora: {{i.Hora}}</div>
+								Hora: {{i.Hora}}
 							</div>
 						</div>
 
 						<div class="precio">
-							{{i.Precio}} €
+							{{i.Precio}}
 						</div>
 					</div>
 				</div>
@@ -44,14 +43,14 @@
 						</div>
 
 						<div class="precio">
-							{{i.Precio}} €
+							{{i.Precio}}
 						</div>
 					</div>
 				</div>
 			{% endfor %}
 		{% endifequal %}
 
-		{% ifequal categoria "empleo" %}
+				{% ifequal categoria "empleo" %}
 			{% for i in record %}
 				<div class="evento">
 					<div class="imagenEvento">
@@ -68,7 +67,7 @@
 						</div>
 
 						<div class="precio">
-							{{i.Sueldo}} €
+							{{i.Sueldo}}
 						</div>
 					</div>
 				</div>
