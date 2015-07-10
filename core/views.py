@@ -103,10 +103,10 @@ def ofertar(request,categoria):
 			toferta=request.POST['TipoOferta']		
 			propietario='Fabio'
 			try:
-				record=ActVivienda.objects.get(Titulo=titulo)
+				record=ActVivienda.objects.get(Titulo=titul)
 				#response = {'message': False}
 			except:
-				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,Usuario_owner=propietario)
+				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,TipoOferta=toferta,Usuario_owner=propietario)
 				Nueva_vivienda.save()
 				#response = {'message': True}
 			return HttpResponseRedirect("/ofertar/vivienda")
