@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.shortcuts import render_to_response
+from django.template.context import RequestContext
 from django.template.loader import get_template
 from core.models import ActOcio
 from core.models import ActVivienda
@@ -20,6 +21,13 @@ import json
 
 # Create your views here.
 #def Detalles(request):
+
+def home(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('home.html',
+                             context_instance=context)
 
 
 def inicio(request):
