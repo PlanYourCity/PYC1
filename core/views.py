@@ -178,7 +178,7 @@ def ofertar(request,categoria):
 			toferta=request.POST['TipoOferta']		
 			propietario='Fabio'
 			try:
-				record=ActVivienda.objects.get(Titulo=titulo)
+				record=ActVivienda.objects.get(Titulo=titul)
 				#response = {'message': False}
 			except:
 				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,TipoOferta=toferta,Usuario_owner=propietario)
@@ -231,7 +231,7 @@ def buscar(request,categoria):
 			record=ActOcio.objects.all()
 			
 			if titulo!="":
-				record=record.filter(Titulo=titulo)
+				record=record.filter(Titulo__contains = titulo)
 			if ciudad != "":
 				record=record.filter(Ciudad=ciudad)
 			if precio != "":
@@ -243,7 +243,7 @@ def buscar(request,categoria):
 			if aforo != "":
 				record=record.filter(Aforo_Max=aforo)
 			if direc != "":
-				record=record.filter(Direccion=direc)
+				record=record.filter(Direccion__contains=direc)
 
 			if record != []:
 				template = get_template("listado.html")		
@@ -265,7 +265,7 @@ def buscar(request,categoria):
 			record=ActVivienda.objects.all()
 			
 			if titulo != "":
-				record=record.filter(Titulo=titulo)
+				record=record.filter(Titulo__contains = titulo)
 			if ciudad != "":
 				record=record.filter(Ciudad=ciudad)
 			if precio != "":
@@ -275,7 +275,7 @@ def buscar(request,categoria):
 			if numHab != "":
 				record=record.filter(NumHab=numHab)
 			if direc != "":
-				record=record.filter(Direccion=direc)
+				record=record.filter(Direccion__contains=direc)
 	
 			if record != []:
 				template = get_template("listado.html")		
@@ -295,7 +295,7 @@ def buscar(request,categoria):
 			record=ActEmpleo.objects.all()
 			Imag="empleo.png"
 			if titulo != "":
-				record=record.filter(Titulo=titulo)
+				record=record.filter(Titulo__contains=titulo)
 			if ciudad != "":
 				record=record.filter(Ciudad=ciudad)
 			if sueldo != "":

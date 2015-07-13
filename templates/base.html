@@ -23,13 +23,13 @@
 	<div id="menuLateral" class="btn-group-vertical navbar-default" role="group">
 
 		<div class="row calendario">
-			<div class=".col-lg-1 boton btn btn-primary btn-lg">
+			<div class=".col-lg-12 boton btn btn-primary btn-lg">
 				<li><a href="http://localhost:8000/calendario">Calendario</a></li>
 			</div>
 		</div>
 
 		<div class="row buscar">
-			<div class=".col-lg-1 boton btn btn-primary btn-lg">
+			<div class=".col-lg-12 boton btn btn-primary btn-lg ">
 				<li><a href="#">Buscar</a></li>
 			</div>
 			<div class="submenuBuscar btn-primary">
@@ -41,10 +41,8 @@
 			</div>
 		</div>
 
-		
-
 		<div class="row ofertar">
-			<div class=".col-lg-1 boton btn btn-primary btn-lg">
+			<div class=".col-lg-12 boton btn btn-primary btn-lg">
 				<li><a href="#">Ofertar</a></li>
 			</div>
 			<div class="submenuOfertar btn-primary">
@@ -58,8 +56,18 @@
 
 	</div>
 
-	<div id="contenido" class="container-fluid">
-		<h1>Plan Your City</h1>	
+	<div id="contenido" class="container-fluid">	
+		<div class="row cabecera">
+			<div class="col-lg-11">
+				<h1>Plan Your City</h1>
+			</div>
+
+			<div class="col-lg-1">
+				<button id="funcUsuario" type="button" class="btn btn-default btn-primary boton" aria-label="Left Align">
+				  <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span>
+				</button>
+			</div>
+		</div>
 
 		<div class="contenidoPrincipal">
 			{% block content %}{% endblock %}
@@ -82,6 +90,7 @@
 	<script type="text/javascript" src="/static/js/submenus.js"></script>
 	<script type="text/javascript" src="/static/js/funcSubmenus.js"></script>
 	<script type="text/javascript" src="/static/js/ofertar.js"></script>
+	<script type="text/javascript" src="/static/js/hoverBoton.js"></script>
 	<!--<script type="text/javascript" src="/static/js/submitOfertar.js"></script>-->
 </html>
 
