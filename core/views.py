@@ -1,3 +1,5 @@
+from django.contrib import auth
+from django.contrib import admin
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.views.generic import TemplateView
@@ -9,15 +11,7 @@ from core.models import ActVivienda
 from core.models import ActEmpleo
 from django.template import Context
 
-from django.views.generic.list import ListView
 
-import urllib2
-from xml.sax.handler import ContentHandler
-from xml.sax import make_parser
-import sys
-import string
-import xml.sax
-import json
 
 # Create your views here.
 #def Detalles(request):
@@ -49,26 +43,107 @@ def lista_eventos(request):
 
 def detalle(request, titulo):
 
-	print(titulo)
-	if request.method == "GET":
-		record=ActOcio.objects.all()
-		for i in record:
-			if i.Titulo==titulo:
-				Tit=i.Titulo
-				Imag=i.Imagen
-				Prec=i.Precio
-				Dirr=i.Direccion
-				Hour=i.Hora
-				Descri=i.Descripcion
-				Afor=i.Aforo_Max
+	categoria=""
+	Imag=""
 
-			else:
-				print("ERROR")
-		titulo=""
-		template = get_template("detalle.html")		
-		diccionario = {'titulo':Tit,'imagen':Imag,'precio':Prec,'direccion':Dirr,'hora':Hour,'descripcion':Descri,'aforo':Afor}		
-		
-		return HttpResponse(template.render(Context(diccionario)))
+	Act_ocio=ActOcio.objects.all()
+	Act_viv=ActVivienda.objects.all()
+	Act_Emp=ActEmpleo.objects.all()
+
+	for i in Act_ocio:
+
+		if titulo==i.Titulo:
+
+			categoria="ocio"
+			Tit=i.Titulo
+			Imag=i.Imagen
+			Prec=i.Precio
+			Dirr=i.Direccion
+			Hour=i.Hora
+			Descri=i.Descripcion
+			Afor= i.Aforo_Max
+			fecha=i.Fecha
+			diccionario = {'categoria':categoria,'titulo':Tit,'imagen':Imag,'precio':Prec,'direccion':Dirr,'hora':Hour,'descripcion':Descri,'aforo':Afor,'fecha':fecha}
+	for i in Act_viv:
+
+		if titulo==i.Titulo:
+
+			categoria="vivienda"
+			Tit=i.Titulo
+			imag=i.Imagen
+			prec=i.Precio
+			Dirr=i.Direccion
+			num_habt=i.NumHab
+			Descri=i.Descripcion
+			Toferta= i.TipoOferta
+			diccionario = {'categoria':categoria,'titulo':Tit,'imagen':Imag,'precio':prec,'direccion':Dirr,'num_habt':num_habt,'descripcion':Descri,'Toferta':Toferta}		
+
+	for i in Act_Emp:
+		if titulo==i.Titulo:
+			categoria="empleo"
+			Tit=i.Titulo
+			Imag="empleo.png"
+			Sueldo=i.Sueldo
+			Dirr=i.Direccion
+			Periodo=i.Periodo
+			Descri=i.Descripcion
+			Plazas= i.Plazas
+			diccionario = {'categoria':categoria,'titulo':Tit,'imagen':Imag,'Sueldo':Sueldo,'direccion':Dirr,'Periodo':Periodo,'descripcion':Descri,'Plazas':Plazas}		
+
+	template = get_template("detalle_ocio.html")	
+	return HttpResponse(template.render(Context(diccionario)))		
+
+	#try:
+	#	Act_ocio=ActOcio.objects.get(Titulo=titulo)
+	#	print("Estoy ocio")
+	#	Tit=Act_ocio.Titulo
+	#	Imag=Act_ocio.Imagen
+	#	Prec=Act_ocio.Precio
+	#	Dirr=Act_ocio.Direccion
+	#	Hour=Act_ocio.Hora
+	#	Descri=Act_ocio.Descripcion
+	#	Afor= Act_ocio.Aforo_Max
+
+	#	template = get_template("detalle_ocio.html")		
+	#	diccionario = {'titulo':Tit,'imagen':Imag,'precio':Prec,'direccion':Dirr,'hora':Hour,'descripcion':Descri,'aforo':Afor}		
+		#return HttpResponse(template.render(Context(diccionario)))
+	#except:
+	#	print("No es Actividad Ocio")
+	# try:
+
+	# 	Act_Viv=ActVivienda.objects.get(Titulo=titulo)
+	# 	print("Estoy viv")
+	# 	titulo=Act_Viv.Titulo
+	# 	imagen=Act_Viv.Imagen
+	# 	precio=Act_Viv.Precio
+	# 	direccion=Act_Viv.Direccion
+	# 	print(str(Dirr))
+	# 	num_habt=Act_ocio.NumHab
+	# 	Descri=Act_Viv.Descripcion
+	# 	Toferta= Act_Viv.TipoOferta
+	# 	template = get_template("detalle_vivienda.html")		
+	# 	diccionario = {'titulo':titulo,'imagen':imagen,'precio':precio,'direccion':direccion,'num_habt':num_habt,'descripcion':descripcion,'Toferta':Toferta}		
+	# 	#return HttpResponse(template.render(Context(diccionario)))
+	# except:
+	# 	print("No es Actividad de vivienda")
+	# try:
+	# 	Act_Emp=ActEmpleo.objects.get(Titulo=titulo)
+	# 	print("Estoy empl")
+	# 	Tit=Act_Emp.Titulo
+	# 	Imag="empleo.png"
+	# 	Sueldo=Act_Emp.Sueldo
+	# 	Dirr=Act_Emp.Direccion
+
+	# 	Periodo=Act_Emp.Periodo
+	# 	Descri=Act_Emp.Descripcion
+	# 	Plazas= Act_Emp.Plazas
+	# 	template = get_template("detalle_empl.html")		
+	# 	diccionario = {'titulo':Tit,'imagen':Imag,'Sueldo':Sueldo,'direccion':Dirr,'Periodo':Periodo,'descripcion':Descri,'Plazas':Plazas}		
+	# 	#return HttpResponse(template.render(Context(diccionario)))
+	# except:
+	# 	print("No es actividad de Empleo")
+	# return HttpResponse(template.render(Context(diccionario)))		
+
 
 
 def ofertar(request,categoria):
@@ -226,7 +301,7 @@ def buscar(request,categoria):
 			sueldo=str(request.POST['sueldo'])
 			periodo=str(request.POST['periodo'])
 			record=ActEmpleo.objects.all()
-			
+			Imag="empleo.png"
 			if titulo != "":
 				record=record.filter(Titulo__contains=titulo)
 			if ciudad != "":
@@ -238,7 +313,7 @@ def buscar(request,categoria):
 		
 			if record != []:
 				template = get_template("listado.html")		
-				diccionario = {'record':record,'categoria':categoria}	
+				diccionario = {'record':record,'Imag':Imag,'categoria':categoria}	
 				return HttpResponse(template.render(Context(diccionario)))
 
 			else:

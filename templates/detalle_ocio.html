@@ -21,7 +21,7 @@
 						<div class="carousel-inner" role="listbox">
 
 							<div class="item active">
-								<img src={{imagen}} alt="actividad">
+								<img src="../../static/images/{{imagen}}" alt="actividad">
 							</div>
 
 						</div>
@@ -40,16 +40,46 @@
 			</div>
 			<div class="float_items main_data">
 				<div class="white_box float_left margin_top">
-					Precio:&nbsp;{{precio}}
+					{% ifequal categoria "ocio" %}
+						Precio:&nbsp;{{precio}}
+					{% endifequal %}
+					{% ifequal categoria "vivienda" %}
+						Precio:&nbsp;{{precio}}
+					{% endifequal %}
+					{% ifequal categoria "empleo" %}
+						Sueldo:&nbsp;{{sueldo}}
+					{% endifequal %}
 				</div>
 				<div class="white_box float_right margin_top">
-					Fecha:&nbsp;
+					{% ifequal categoria "ocio" %}
+						Fecha:&nbsp; {{fecha}}
+					{% endifequal %}
 				</div>
 				<div class="white_box float_left float_below margin_top">
-					Aforo:&nbsp;{{aforo}}
+					{% ifequal categoria "ocio" %}
+						Aforo:&nbsp;{{aforo}}
+					{% endifequal %}
+
+					{% ifequal categoria "vivienda" %}
+						Tipo de Oferta:&nbsp;{{Toferta}}
+					{% endifequal %}
+
+					{% ifequal categoria "empleo" %}
+						Número de Plazas:&nbsp;{{Plazas}}
+					{% endifequal %}
 				</div>
 				<div class="white_box float_right margin_top">
-					Hora:&nbsp;{{hora}}
+					{% ifequal categoria "ocio" %}
+						Hora:&nbsp;{{hora}}
+					{% endifequal %}
+
+					{% ifequal categoria "vivienda" %}
+						Número de habitaciones:&nbsp;{{num_habt}}
+					{% endifequal %}
+
+					{% ifequal categoria "empleo" %}
+						Duración:&nbsp;{{Periodo}}
+					{% endifequal %}
 				</div>
 			</div>
 			<div id="clear_address">
