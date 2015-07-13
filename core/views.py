@@ -73,14 +73,14 @@ def ofertar(request,categoria):
 		return HttpResponse(template.render(Context(diccionario)))
 
 	elif request.method == "POST":
-		#respuesta = {}			
+		respuesta = {}			
 		ciuda=request.POST['Ciudad']
 		direccio=request.POST['Direccion']
 		titul=request.POST['Titulo']
 		descripcio=request.POST['Descripcion']	
 		
 		if categoria=="ocio":
-				
+
 			image=request.POST['Imagen']
 			#ruta_imga="../../static/images/"
 
@@ -104,14 +104,14 @@ def ofertar(request,categoria):
 			propietario='Fabio'
 			try:
 				record=ActVivienda.objects.get(Titulo=titul)
-				#response = {'message': False}
+				response = {'message': False}
 			except:
-				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=imagen,Precio=precio,NumHab=nhabit,TipoOferta=toferta,Usuario_owner=propietario)
+				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio, Imagen=imagen, Precio=precio,NumHab=nhabit,TipoOferta=toferta,Usuario_owner=propietario)
 				Nueva_vivienda.save()
-				#response = {'message': True}
-			return HttpResponseRedirect("/ofertar/vivienda")
+				response = {'message': True}
+			#return HttpResponseRedirect("/ofertar/vivienda")
 
-			#return HttpResponse(json.dumps(response), content_type="application/json")
+			return HttpResponse(json.dumps(response), content_type="application/json")
 
 		elif categoria=="empleo":
 			sueldo=request.POST["Sueldo"]
