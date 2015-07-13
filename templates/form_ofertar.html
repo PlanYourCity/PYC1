@@ -9,7 +9,7 @@
 		<div id="title">
 			<h3>Formulario para ofertar {{categoria}}</h3>
     	</div>
-		<form id="formOfertar" method="post"> <!--action= "/ofertar/{{categoria}}/"-->
+		<form id="formOfertar" method="post" enctype="multipart/form-data"> <!--action= "/ofertar/{{categoria}}/"-->
 		{% csrf_token %}
 			<input type="hidden" name="category" value="{{categoria}}">
 			<div class="float_items">
@@ -175,7 +175,7 @@
 						Imagen:
 					</div>
 					<div class="campo_rellenar">
-						<input class="entrada" type="file" name="Imagen">
+						<input class="entrada" type="file" name="Imagen" value="">
 					</div>
 				</div>
 			{% endifequal %}
@@ -213,12 +213,19 @@
 						</select>
 					</div>
 				</div>
+				<div class="float_items">
+					<div class="campo">
+						Imagen:
+					</div>
+					<div class="campo_rellenar">
+						<input class="entrada" type="file" name="Imagen">
+					</div>
+				</div>
 			{% endifequal %}
 
 
 			<div class="float_items">
-
-				<input type="submit" value="Confirmar" class="boton_formulario"/> 
+				<button id="buttonForm" class="boton_formulario">Confirmar</button>
 				<input type="reset" class="boton_formulario" onclick="return confirm('¿Seguro que quieres restablecer el formulario?')"/>
 			</div>
 		</form>
