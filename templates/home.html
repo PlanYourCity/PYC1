@@ -1,23 +1,47 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Plan Your City - Login</title>
+	<meta charset="UTF-8">
+	<link href="../static/css/style_login.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="../static/js/login.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
 
-{% block content %}
- <div>
+<body>
+	<div id="main">
+		<h1 id="title">Plan Your City</h1>
+		<div id="login">
+			<h3 id="login-title">Log In</h3>
+			<div id="login-content">
+				<p>Conéctate a través de tu cuenta de Google+:</p>
+				<div id="google-button">
+					{% if user and not user.is_anonymous %}
+					<li>
+						<a>Hello {{ user.get_full_name|default:user.username }}!</a>
+					</li>
+					<li>
+						<a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+					</li>
+					{% else %}
 
- <p>
-   <ul>
-   {% if user and not user.is_anonymous %}
-     <li>
-       <a>Hello {{ user.get_full_name|default:user.username }}!</a>
-     </li>
-     <li>
-       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
-     </li>
-   {% else %}
-     <li>
-       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
-     </li>
-   {% endif %}
-   </ul>
- </p>
- </div>
-{% endblock %}
+					<div id="customBtn" onclick="signInGoogle()" class="customGPlusSignIn">
+   						<span class="icon"></span>
+    					<span class="buttonText">Google+</span>
+    					<script>
+							function signInGoogle() {
+							    window.location.assign("{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}");
+							}
+						</script>
+
+  					</div>
+					{% endif %}
+				</div>
+				<p id="nota">Nota: Para usar nuestra aplicación necesitas una cuenta de Google+. Puedes crearte una <a href="https://accounts.google.com/signup?hl=es">aquí</a>.</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html> 

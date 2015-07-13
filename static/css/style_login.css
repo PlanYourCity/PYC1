@@ -1,0 +1,79 @@
+@font-face{
+	font-family: Babaca;
+	src: url(fonts/Rotary.woff) format('woff');
+}
+
+html, body {
+	background-color: #E6EAEE;
+}
+
+#main {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#title {
+	text-align: center;
+	font-weight: normal;
+	font-family: Babaca !important;
+}
+
+#login {
+	background-color: white;
+	margin: 10% auto;
+	font-size: 20px;
+	width: 60%;
+	border-style: solid;
+}
+
+#login-title {
+	padding: 4%;
+	margin: 0 auto;
+	vertical-align: middle;
+	text-align: center;
+	border-bottom: solid;
+	font-weight: normal;
+	font-family: Babaca !important;
+}
+
+#login-content {
+	padding: 2%;
+}
+
+#google-button {
+	text-align: center;
+	padding: 2%;
+	margin: auto;
+}
+
+#nota {
+	font-size: 12px;
+}
+
+#customBtn {
+	text-align: left;
+	display: inline-block;
+	background: #cc3732;
+	color: white;
+	width: 175px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#customBtn:hover {
+	background: #e74b37;
+	cursor: hand;
+}
+span.label {
+	font-weight: bold;
+}
+span.icon {
+	background: url('../images/btn_red_32.png') transparent 10px 50% no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	width: 40px;
+	height: 40px;
+}
+span.buttonText {
+	vertical-align: middle;
+	padding-left: 20px;
+}
