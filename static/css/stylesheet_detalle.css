@@ -26,23 +26,23 @@
 	font-size: 24px;
 }
 
-.float_right {
+.float_right_detalle {
 	width: 49%;
 	float: right;
 	clear: right;
 }
 
-.float_left {
+.float_left_detalle {
 	width: 49%;
 	float: left;
 	clear: left;
 }
 
-.float_items {
+.float_items_detalle {
 	overflow: visible;
 }
 
-.float_below {
+.float_below_detalle {
 	clear:both;
 }
 
@@ -130,6 +130,10 @@
 
 .active {
 	padding-top: 0%;
+}
+
+.precio_centrado {
+	text-align: center;
 }
 
 #map-canvas {

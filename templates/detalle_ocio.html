@@ -38,24 +38,32 @@
 					</div>
 				</div>
 			</div>
-			<div class="float_items main_data">
-				<div class="white_box float_left margin_top">
-					{% ifequal categoria "ocio" %}
-						Precio:&nbsp;{{precio}}
-					{% endifequal %}
-					{% ifequal categoria "vivienda" %}
-						Precio:&nbsp;{{precio}}
-					{% endifequal %}
-					{% ifequal categoria "empleo" %}
-						Sueldo:&nbsp;{{sueldo}}
-					{% endifequal %}
+			<div class="float_items_detalle main_data">
+
+				{% ifequal categoria "ocio" %}
+				<div class="white_box float_left_detalle margin_top">
+					Precio:&nbsp;{{precio}}&nbsp;€
 				</div>
-				<div class="white_box float_right margin_top">
-					{% ifequal categoria "ocio" %}
-						Fecha:&nbsp; {{fecha}}
-					{% endifequal %}
+				{% endifequal %}
+				{% ifequal categoria "vivienda" %}
+				<div class="white_box precio_centrado margin_top">
+					Precio:&nbsp;{{precio}}&nbsp;€
 				</div>
-				<div class="white_box float_left float_below margin_top">
+				{% endifequal %}
+			
+				
+				{% ifequal categoria "empleo" %}
+				<div class="white_box precio_centrado margin_top">
+					Sueldo:&nbsp;{{sueldo}}&nbsp;€
+				</div>
+				{% endifequal %}
+
+				{% ifequal categoria "ocio" %}
+				<div class="white_box float_right_detalle margin_top">
+						Fecha:&nbsp;{{fecha}}
+				</div>
+				{% endifequal %}
+				<div class="white_box float_left_detalle float_below_detalle margin_top">
 					{% ifequal categoria "ocio" %}
 						Aforo:&nbsp;{{aforo}}
 					{% endifequal %}
@@ -68,7 +76,7 @@
 						Número de Plazas:&nbsp;{{Plazas}}
 					{% endifequal %}
 				</div>
-				<div class="white_box float_right margin_top">
+				<div class="white_box float_right_detalle margin_top">
 					{% ifequal categoria "ocio" %}
 						Hora:&nbsp;{{hora}}
 					{% endifequal %}
