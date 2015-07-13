@@ -11,7 +11,7 @@ from core.models import ActVivienda
 from core.models import ActEmpleo
 from django.template import Context
 
-
+import json
 
 # Create your views here.
 #def Detalles(request):
@@ -175,10 +175,13 @@ def ofertar(request,categoria):
 
 			try:
 				record=ActOcio.objects.get(Titulo=titul)
+				response = {'message': False}
 			except:
 				Nueva_actividad_ocio=ActOcio(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Imagen=image,Precio=preci,Fecha=fech,Hora=hor,Aforo_Max=aforo_ma,Usuario_owner=propietari)
-				Nueva_actividad_ocio.save()			
-			return HttpResponseRedirect("/ofertar/ocio")
+				Nueva_actividad_ocio.save()
+				response = {'message': True}			
+			#return HttpResponseRedirect("/ofertar/ocio")
+			return HttpResponse(json.dumps(response), content_type="application/json")
 		elif categoria=="vivienda":
 			imagen=request.POST['Imagen']
 			precio=request.POST['Precio']
@@ -189,7 +192,8 @@ def ofertar(request,categoria):
 				record=ActVivienda.objects.get(Titulo=titul)
 				response = {'message': False}
 			except:
-				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio, Imagen=imagen, Precio=precio,NumHab=nhabit,TipoOferta=toferta,Usuario_owner=propietario)
+				Nueva_vivienda=ActVivienda(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio, Imagen=imagen, Precio=precio,NumHab=nhabit,TipoOferta=toferta,Usuario_owner=propietario)  
+				#Imagen=imagen,
 				Nueva_vivienda.save()
 				response = {'message': True}
 			#return HttpResponseRedirect("/ofertar/vivienda")
@@ -204,10 +208,13 @@ def ofertar(request,categoria):
 
 			try:
 				record=ActEmpleo.objects.get(Titulo=titul)
+				response = {'message': False}
 			except:
 				Nueva_Empleo=ActEmpleo(Ciudad=ciuda,Direccion=direccio,Titulo=titul,Descripcion=descripcio,Sueldo=sueldo,Periodo=periodo,Plazas=plazas)
-				Nueva_Empleo.save()			
-			return HttpResponseRedirect("/ofertar/empleo")
+				Nueva_Empleo.save()
+				response = {'message': True}			
+			#return HttpResponseRedirect("/ofertar/empleo")
+			return HttpResponse(json.dumps(response), content_type="application/json")
 		#else
 			#except:
 			#canal="<h1> la url del canal introducido no es valida</h1>"
